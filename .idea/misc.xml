@@ -4,7 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ChinEAssBang/AndroidStudioProjects/WhatsObj/app/src/main/res/drawable/roundstyle.xml" value="0.2703125" />
-        <entry key="..\:/Users/ChinEAssBang/AndroidStudioProjects/WhatsObj/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ChinEAssBang/AndroidStudioProjects/WhatsObj/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/ChinEAssBang/AndroidStudioProjects/WhatsObj/app/src/main/res/layout/activity_predict.xml" value="0.264" />
+        <entry key="..\:/Users/ChinEAssBang/AndroidStudioProjects/WhatsObj/app/src/main/res/layout/fragment_main.xml" value="0.16530797101449277" />
+        <entry key="..\:/Users/ChinEAssBang/AndroidStudioProjects/WhatsObj/app/src/main/res/layout/fragment_main_screen.xml" value="0.16530797101449277" />
+        <entry key="..\:/Users/ChinEAssBang/AndroidStudioProjects/WhatsObj/app/src/main/res/layout/fragment_predict.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

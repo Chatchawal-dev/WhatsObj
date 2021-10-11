@@ -9,11 +9,11 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.ImageButton
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import android.app.ActivityManager
 import android.content.Context
+import android.graphics.Matrix
 import android.os.Build
 
 
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this,
-                        "Permission for camera was denied", Toast.LENGTH_LONG
+                        "Permission for camera was denied. However, this can be changed in the setting.", Toast.LENGTH_LONG
                     ).show()
                 }
             }
@@ -75,12 +75,13 @@ class MainActivity : AppCompatActivity() {
             if(resultCode == Activity.RESULT_OK){
                 if(requestCode == CAMERA_REQUEST_CODE){
                     val thumbNail : Bitmap = data!!.extras!!.get("data") as Bitmap
-
-                    val ivImage = findViewById<AppCompatImageView>(R.id.iv_image)
-                    ivImage.setImageBitmap(thumbNail)
+                    val resizeThumbNail = getResizedBitmap(thumbNail,224,224)
+                    val intent = Intent(this, PredictActivity::class.java)
+                    intent.putExtra("data", resizeThumbNail)
+                    startActivity(intent)
                 }
             }
-
+        //clearAppData()
         }
 
     private  fun clearAppData() {
@@ -96,6 +97,24 @@ class MainActivity : AppCompatActivity() {
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
+    }
+
+    fun getResizedBitmap(bm: Bitmap, newWidth: Int, newHeight: Int): Bitmap {
+        val width = bm.width
+        val height = bm.height
+        val scaleWidth = newWidth.toFloat() / width
+        val scaleHeight = newHeight.toFloat() / height
+        // CREATE A MATRIX FOR THE MANIPULATION
+        val matrix = Matrix()
+        // RESIZE THE BIT MAP
+        matrix.postScale(scaleWidth, scaleHeight)
+
+        // "RECREATE" THE NEW BITMAP
+        val resizedBitmap = Bitmap.createBitmap(
+            bm, 0, 0, width, height, matrix, false
+        )
+        bm.recycle()
+        return resizedBitmap
     }
 
     }
